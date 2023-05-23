@@ -14,14 +14,17 @@ const getSingleUser = async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.userId })
       .select("-__v")
-      .populate("thoughts")
+      .populate("thought")
       .populate("friends");
+    console.log("User found!");
+    console.log(user);
     if (!user) {
       res.status(404).json({ message: "No user with ID" });
     } else {
       res.status(200).json(user);
     }
   } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 };
