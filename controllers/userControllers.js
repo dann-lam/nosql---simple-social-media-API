@@ -1,23 +1,12 @@
 const { ObjectId } = require("mongoose").Types;
 const { User, Thought } = require("../models");
 
-const getUsers = async (req, res) => {
-  try {
-    const users = await User.find();
-    res.status(200).json(users);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
-
 const getSingleUser = async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.userId })
       .select("-__v")
-      .populate("thought")
+      .populate("thoughts")
       .populate("friends");
-    console.log("User found!");
-    console.log(user);
     if (!user) {
       res.status(404).json({ message: "No user with ID" });
     } else {
@@ -25,6 +14,15 @@ const getSingleUser = async (req, res) => {
     }
   } catch (err) {
     console.error(err);
+    res.status(500).json(err);
+  }
+};
+
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (err) {
     res.status(500).json(err);
   }
 };
