@@ -41,8 +41,7 @@ start the server, npm run start.
 
 Here is a quick demo of the application:
 
-![Image of Application]([https://raw.githubusercontent.com/dann-lam/nosql---simple-social-media-API/main/walkthrough.gif])(https://raw.githubusercontent.com/dann-lam/nosql---simple-social-media-API/main/walkthrough.gif)
-
+![Image of Application](https://raw.githubusercontent.com/dann-lam/nosql---simple-social-media-API/main/walkthrough.gif)
 
 
 ## Learning Points
